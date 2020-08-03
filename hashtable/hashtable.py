@@ -21,7 +21,7 @@ class HashTable:
     """
 
     def __init__(self, capacity):
-        self.buckets = capacity
+        self.capacity = capacity
         self.storage = [None] * capacity
         self.count = 0
 
@@ -90,9 +90,9 @@ class HashTable:
         addToTable = HashTableEntry(key, value)
 
         if self.storage[indexNumber]:
-            pass
+            return
         else:
-            self.storage[indexNumber] = addToTable
+            self.storage[indexNumber] = addToTable  
             self.count += 1
         
 
@@ -116,7 +116,15 @@ class HashTable:
 
         Implement this.
         """
-        # Your code here
+        indexNumber = self.hash_index(key)
+        node = self.storage[indexNumber]
+
+        while node != None:
+            if node.key == key:
+                return node.value
+            else:
+                node = node.next
+        return None
 
 
     def resize(self, new_capacity):
