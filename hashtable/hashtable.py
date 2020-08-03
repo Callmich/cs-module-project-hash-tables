@@ -23,8 +23,6 @@ class HashTable:
     def __init__(self, capacity):
         self.capacity = capacity
         self.storage = [None] * capacity
-        self.count = 0
-
 
     def get_num_slots(self):
         """
@@ -36,7 +34,7 @@ class HashTable:
 
         Implement this.
         """
-        # Your code here
+        return self.capacity
 
 
     def get_load_factor(self):
@@ -90,10 +88,9 @@ class HashTable:
         addToTable = HashTableEntry(key, value)
 
         if self.storage[indexNumber]:
-            return
+            self.storage[indexNumber] = value
         else:
-            self.storage[indexNumber] = addToTable  
-            self.count += 1
+            self.storage[indexNumber] = addToTable
         
 
 
@@ -105,7 +102,12 @@ class HashTable:
 
         Implement this.
         """
-        # Your code here
+        indexNumber = self.hash_index(key)
+        node = self.storage[indexNumber]
+        
+        if node:
+            self.storage[indexNumber] = None
+
 
 
     def get(self, key):
@@ -119,7 +121,7 @@ class HashTable:
         indexNumber = self.hash_index(key)
         node = self.storage[indexNumber]
 
-        while node != None:
+        while node is not None:
             if node.key == key:
                 return node.value
             else:
