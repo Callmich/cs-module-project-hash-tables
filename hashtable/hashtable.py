@@ -86,7 +86,15 @@ class HashTable:
 
         Implement this.
         """
-        # Your code here
+        indexNumber = self.hash_index(key)
+        addToTable = HashTableEntry(key, value)
+
+        if self.storage[indexNumber]:
+            pass
+        else:
+            self.storage[indexNumber] = addToTable
+            self.count += 1
+        
 
 
     def delete(self, key):
