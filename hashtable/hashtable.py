@@ -136,10 +136,15 @@ class HashTable:
             lastNode = None
             nextNode = alreadyExists.next
             while alreadyExists:
-                if alreadyExists.key = key:
+                if alreadyExists.key == key and lastNode is None:
+                    alreadyExists.next = None
+                    self.elements -= 1
+                    return alreadyExists
+                elif alreadyExists.key == key and lastNode is not None:
                     lastNode.next = nextNode
                     alreadyExists.next = None
                     self.elements -= 1
+                    return alreadyExists
                 else:
                     lastNode = alreadyExists
                     alreadyExists = alreadyExists.next
