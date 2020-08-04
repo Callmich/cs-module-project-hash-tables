@@ -23,6 +23,7 @@ class HashTable:
     def __init__(self, capacity):
         self.capacity = capacity
         self.storage = [None] * capacity
+        self.elements = 0
 
     def get_num_slots(self):
         """
@@ -43,7 +44,7 @@ class HashTable:
 
         Implement this.
         """
-        # Your code here
+        return self.elements / self.capacity
 
 
     def fnv1(self, key):
@@ -71,10 +72,10 @@ class HashTable:
 
         Implement this, and/or FNV-1.
         """
-        # hash = 5381
-        # for c in key:
-        #     hash = (hash * 33) + ord(c)
-        # return hash
+        hash = 5381
+        for c in key:
+            hash = (hash * 33) + ord(c)
+        return hash
 
 
     def hash_index(self, key):
@@ -82,8 +83,8 @@ class HashTable:
         Take an arbitrary key and return a valid integer index
         between within the storage capacity of the hash table.
         """
-        return self.fnv1(key) % self.capacity
-        # return self.djb2(key) % self.capacity
+        # return self.fnv1(key) % self.capacity
+        return self.djb2(key) % self.capacity
 
     def put(self, key, value):
         """
@@ -93,15 +94,21 @@ class HashTable:
 
         Implement this.
         """
+        # indexNumber = self.hash_index(key)
+        # self.storage[indexNumber] = value
+
         indexNumber = self.hash_index(key)
-        self.storage[indexNumber] = value
+        alreadyExists = self.storage[indexNumber]
+        newNode = HashTableEntry(key, value)
 
-        # if self.storage[indexNumber]:
-        #     self.storage[indexNumber] = value
-        # else:
-        #     self.storage[indexNumber] = addToTable
-        
-
+        # First check if entry is in Table
+        if alreadyExists:
+            current = self.head
+            while head is not None:
+                if alreadyExists.key == key:
+                    alreadyExists.value == value
+                    return
+                alreadyExists = alreadyExists.next
 
     def delete(self, key):
         """
