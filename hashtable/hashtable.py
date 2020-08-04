@@ -112,9 +112,13 @@ class HashTable:
                 alreadyExists = alreadyExists.next
             lastNode.next = newNode
             self.elements += 1
+            if self.get_load_factor() > 0.7:
+                self.resize(self.capacity * 2)
         else:
             self.storage[indexNumber] = newNode
             self.elements += 1
+            if self.get_load_factor() > 0.7:
+                self.resize(self.capacity * 2)
 
 
     def delete(self, key):
