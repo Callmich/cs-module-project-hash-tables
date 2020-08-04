@@ -106,8 +106,8 @@ class HashTable:
             lastNode = None
             while alreadyExists:
                 if alreadyExists.key == key:
-                    alreadyExists.value == value
-                    return
+                    alreadyExists.value = value
+                    return alreadyExists.value
                 lastNode = alreadyExists
                 alreadyExists = alreadyExists.next
             lastNode.next = newNode
@@ -137,19 +137,20 @@ class HashTable:
             nextNode = alreadyExists.next
             while alreadyExists:
                 if alreadyExists.key == key and lastNode is None:
+                    alreadyExists.value = None
                     alreadyExists.next = None
                     self.elements -= 1
-                    return alreadyExists
+                    return None
                 elif alreadyExists.key == key and lastNode is not None:
+                    alreadyExists.value = None
                     lastNode.next = nextNode
                     alreadyExists.next = None
                     self.elements -= 1
-                    return alreadyExists
+                    return None
                 else:
+                    nextNode = alreadyExists.next.next
                     lastNode = alreadyExists
                     alreadyExists = alreadyExists.next
-                    nextNode = alreadyExists.next
-            return None
         else:
             return None
                 
