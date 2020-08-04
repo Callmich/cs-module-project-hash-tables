@@ -113,12 +113,12 @@ class HashTable:
             lastNode.next = newNode
             self.elements += 1
             if self.get_load_factor() > 0.7:
-                self.resize(self.capacity * 2)
+                self.resize(len(self.storage) * 2)
         else:
             self.storage[indexNumber] = newNode
             self.elements += 1
             if self.get_load_factor() > 0.7:
-                self.resize(self.capacity * 2)
+                self.resize(len(self.storage) * 2)
 
 
     def delete(self, key):
@@ -201,7 +201,7 @@ class HashTable:
         oldHash = self.storage
         self.capacity = new_capacity
 
-        self.storage = None * new_capacity
+        self.storage = [None] * new_capacity
 
         for x in range(len(oldHash)):
             oldEntry = oldHash[x]
