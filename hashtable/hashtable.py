@@ -194,8 +194,18 @@ class HashTable:
 
         Implement this.
         """
-        # Your code here
+        oldHash = self.storage
+        self.capacity = new_capacity
 
+        self.storage = None * new_capacity
+
+        for x in range(len(oldHash)):
+            oldEntry = oldHash[x]
+
+            while oldEntry:
+                if oldEntry.key:
+                    self.put(oldEntry.key, oldEntry.value)
+                    oldEntry = oldEntry.next
 
 
 if __name__ == "__main__":
