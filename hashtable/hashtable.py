@@ -112,6 +112,10 @@ class HashTable:
                 alreadyExists = alreadyExists.next
             lastNode.next = newNode
             self.elements += 1
+        else:
+            self.storage[indexNumber] = newNode
+            self.elements += 1
+
 
     def delete(self, key):
         """
@@ -122,8 +126,29 @@ class HashTable:
         Implement this.
         """
 
+        # indexNumber = self.hash_index(key)
+        # self.storage[indexNumber] = None
+
         indexNumber = self.hash_index(key)
-        self.storage[indexNumber] = None
+        alreadyExists = self.storage[indexNumber]
+
+        if alreadyExists:
+            lastNode = None
+            nextNode = alreadyExists.next
+            while alreadyExists:
+                if alreadyExists.key = key:
+                    lastNode.next = nextNode
+                    alreadyExists.next = None
+                    self.elements -= 1
+                else:
+                    lastNode = alreadyExists
+                    alreadyExists = alreadyExists.next
+                    nextNode = alreadyExists.next
+            return None
+        else:
+            return None
+                
+
 
 
 
