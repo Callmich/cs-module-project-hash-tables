@@ -103,12 +103,15 @@ class HashTable:
 
         # First check if entry is in Table
         if alreadyExists:
-            current = self.head
-            while head is not None:
+            lastNode = None
+            while alreadyExists:
                 if alreadyExists.key == key:
                     alreadyExists.value == value
                     return
+                lastNode = alreadyExists
                 alreadyExists = alreadyExists.next
+            lastNode.next = newNode
+            self.elements += 1
 
     def delete(self, key):
         """
@@ -133,8 +136,22 @@ class HashTable:
         Implement this.
         """
 
+        # indexNumber = self.hash_index(key)
+        # return self.storage[indexNumber]
+
         indexNumber = self.hash_index(key)
-        return self.storage[indexNumber]
+        alreadyExists = self.storage[indexNumber]
+
+        if alreadyExists:
+            lastNode = None
+            while alreadyExists:
+                if alreadyExists.key == key:
+                    return alreadyExists.value
+                lastNode = alreadyExists
+                alreadyExists = alreadyExists.next
+            return None
+        else:
+            return None
            
 
 
