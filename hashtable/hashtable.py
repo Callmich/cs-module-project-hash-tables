@@ -137,6 +137,7 @@ class HashTable:
             nextNode = alreadyExists.next
             while alreadyExists:
                 if alreadyExists.key == key and lastNode is None:
+                    self.storage[indexNumber] = alreadyExists.next
                     alreadyExists.value = None
                     alreadyExists.next = None
                     self.elements -= 1
