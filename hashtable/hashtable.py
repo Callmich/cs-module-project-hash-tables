@@ -52,8 +52,17 @@ class HashTable:
 
         Implement this, and/or DJB2.
         """
+        FNVPrime = 1099511628211
+        offsetBasis = 14695981039346656037
 
-        # Your code here
+        hashedKey = offsetBasis
+
+        byteString = key.encode()
+        for b in byteString:
+            hashedKey *= FNVPrime
+            hashedKey ^= b
+
+        return hashedKey
 
 
     def djb2(self, key):
@@ -62,10 +71,10 @@ class HashTable:
 
         Implement this, and/or FNV-1.
         """
-        hash = 5381
-        for c in key:
-            hash = (hash * 33) + ord(c)
-        return hash
+        # hash = 5381
+        # for c in key:
+        #     hash = (hash * 33) + ord(c)
+        # return hash
 
 
     def hash_index(self, key):
@@ -73,8 +82,8 @@ class HashTable:
         Take an arbitrary key and return a valid integer index
         between within the storage capacity of the hash table.
         """
-        #return self.fnv1(key) % self.capacity
-        return self.djb2(key) % self.capacity
+        return self.fnv1(key) % self.capacity
+        # return self.djb2(key) % self.capacity
 
     def put(self, key, value):
         """
@@ -85,12 +94,12 @@ class HashTable:
         Implement this.
         """
         indexNumber = self.hash_index(key)
-        addToTable = HashTableEntry(key, value)
+        self.storage[indexNumber] = value
 
-        if self.storage[indexNumber]:
-            self.storage[indexNumber] = value
-        else:
-            self.storage[indexNumber] = addToTable
+        # if self.storage[indexNumber]:
+        #     self.storage[indexNumber] = value
+        # else:
+        #     self.storage[indexNumber] = addToTable
         
 
 
@@ -102,11 +111,9 @@ class HashTable:
 
         Implement this.
         """
+
         indexNumber = self.hash_index(key)
-        node = self.storage[indexNumber]
-        
-        if node:
-            self.storage[indexNumber] = None
+        self.storage[indexNumber] = None
 
 
 
@@ -118,15 +125,10 @@ class HashTable:
 
         Implement this.
         """
-        indexNumber = self.hash_index(key)
-        node = self.storage[indexNumber]
 
-        while node is not None:
-            if node.key == key:
-                return node.value
-            else:
-                node = node.next
-        return None
+        indexNumber = self.hash_index(key)
+        return self.storage[indexNumber]
+           
 
 
     def resize(self, new_capacity):
