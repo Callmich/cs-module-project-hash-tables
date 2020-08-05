@@ -34,6 +34,7 @@ def word_count(s):
     newString = origString
     for character in removedChars:
         newString = newString.replace(character, "")
+    
     splitString = newString.split()
 
     wordCount = {}
