@@ -38,9 +38,13 @@ def word_count(s):
 
     wordCount = {}
 
+    for x in splitString:
+        if not wordCount.get(x):
+            wordCount[x] = 1
+        else:
+            wordCount[x] = wordCount[x] + 1
     
-    
-
+    return wordCount
 
 
 
