@@ -18,7 +18,14 @@ def slowfun(x, y):
     output, but completes quickly instead of taking ages to run.
     """
 
-    
+    cacheNums = math.pow(x,y)
+    if cacheNums not in cache:
+        cache[cacheNums] = math.factorial(cacheNums)
+        cache[cacheNums] // (x + y)
+        cache[cacheNums] % 982451653
+    v = cache[cacheNums]
+
+    return v
 
 
 
