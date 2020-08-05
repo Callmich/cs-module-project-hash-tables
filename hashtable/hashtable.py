@@ -156,6 +156,7 @@ class HashTable:
                     nextNode = alreadyExists.next.next
                     lastNode = alreadyExists
                     alreadyExists = alreadyExists.next
+            return None
         else:
             return None
                 

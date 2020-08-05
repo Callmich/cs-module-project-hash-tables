@@ -1,8 +1,14 @@
 # Your code here
-
+cache = {}
 
 def expensive_seq(x, y, z):
-    # Your code here
+    if x<=1:
+        return y + z
+    
+    if (x,y,z) not in cache:
+        cache[(x,y,z)] = exps(x-1,y+1,z) + exps(x-2,y+2,z*2) + exps(x-3,y+3,z*3)
+
+    return cache[(x,y,z)]
 
 
 
