@@ -28,15 +28,19 @@ def word_count(s):
     # loop over the list and place each word into a dictionary with the value being the word count.
     # return the dictionary
 
-    
     origString = s.lower()
     removedChars = '":;,.-+=/\|][}{()*^&'
 
     newString = origString
     for character in removedChars:
         newString = newString.replace(character, "")
+    splitString = newString.split()
+
+    wordCount = {}
+
     
-    print(newString)
+    
+
 
 
 
