@@ -1,4 +1,4 @@
-# Sentence Generation with Markov Chains
+# Sentence Generation with Markov Chains 
 
 This is a fun little technique that you can use to generate gobbledegook
 sentences that sound real while making absolutely no sense.
