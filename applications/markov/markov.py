@@ -29,10 +29,13 @@ for x in range (len(split_words[:-1])):
 for x in split_words:
     if x[0].isupper() or len(x) > 1 and x[1].isupper():
         start_words.append(x)
-    elif x[-1] == "." or "?" or "!" or len(x) > 1 and x[-2] == "." or "?" or "!":
+    elif x[-1] == "." or x[-1] == "?" or x[-1] == "!" or len(x) > 1 and x[-2] == "." or len(x) > 1 and x[-2] == "?" or len(x) > 1 and x[-2] == "!":
         end_words.append(x)
 
+stop_sentence = False
 
+while not stop_sentence:
+    
 # TODO: construct 5 random sentences
 # Your code here
 
