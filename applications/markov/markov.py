@@ -32,15 +32,17 @@ for x in split_words:
     elif x[-1] == "." or x[-1] == "?" or x[-1] == "!" or len(x) > 1 and x[-2] == "." or len(x) > 1 and x[-2] == "?" or len(x) > 1 and x[-2] == "!":
         end_words.append(x)
 
-stop_sentence = False
-word_to_print = random.choice(start_words)
-while not stop_sentence:
-    print(word_to_print, end=" ")
-    if word_to_print in end_words:
-        stop_sentence = True
-        break
-    word_to_print = random.choice(word_dict[word_to_print])
+for x in range (0,5):
+    stop_sentence = False
+    word_to_print = random.choice(start_words)
+    while not stop_sentence:
+        print(word_to_print, end=" ")
+        if word_to_print in end_words:
+            stop_sentence = True
+            break
+        word_to_print = random.choice(word_dict[word_to_print])
+    print(" ")
     
 # TODO: construct 5 random sentences
-# Your code here
+# Your code here 
 
