@@ -33,8 +33,13 @@ for x in split_words:
         end_words.append(x)
 
 stop_sentence = False
-
+word_to_print = random.choice(start_words)
 while not stop_sentence:
+    print(word_to_print, end=" ")
+    if word_to_print in end_words:
+        stop_sentence = True
+        break
+    word_to_print = random.choice(word_dict[word_to_print])
     
 # TODO: construct 5 random sentences
 # Your code here
