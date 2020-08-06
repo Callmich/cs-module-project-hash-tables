@@ -17,6 +17,8 @@ with open("input.txt") as f:
 split_words = f.split()
 
 word_dict = {}
+start_words = []
+end_words = []
 
 for x in range (len(split_words[:-1])):
     if not word_dict.get(split_words[x]):
@@ -24,7 +26,11 @@ for x in range (len(split_words[:-1])):
     else:
         word_dict[split_words[x]] += [split_words[x + 1]]
 
-print(word_dict)
+for x in split_words:
+    if x[0].isupper() or len(x) > 1 and x[1].isupper():
+        start_words.append(x)
+    elif x[-1] == "." or "?" or "!" or len(x) > 1 and x[-2] == "." or "?" or "!":
+        end_words.append(x)
 
 
 # TODO: construct 5 random sentences
